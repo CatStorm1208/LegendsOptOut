@@ -1,0 +1,27 @@
+{
+    "schemaVersion": 1,
+    "id": "optout",
+    "version": "${version}",
+    "name": "LegendsOptOut",
+    "description": "",
+    "authors": [],
+    "contact": {},
+    "license": "MIT",
+    "environment": "*",
+    "entrypoints": {
+        "client": [
+            "de.catstorm.optout.optout.client.LegendsOptOutClient"
+        ],
+        "main": [
+            "de.catstorm.optout.optout.LegendsOptOut"
+        ]
+    },
+    "mixins": [
+        "optout.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${loader_version}",
+        "fabric": "*",
+        "minecraft": "${minecraft_version}"
+    }
+}
