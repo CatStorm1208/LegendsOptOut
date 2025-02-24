@@ -50,6 +50,12 @@ public class LegendsOptOut implements ModInitializer {
                 .executes(context -> {
                     try {
                         ServerCommandSource source = context.getSource();
+                        for (var player : playersScheduledForRemoval) {
+                            if (Objects.requireNonNull(source.getPlayer()).getNameForScoreboard().equals(player.playerName)) {
+                                playersScheduledForRemoval.remove(player);
+                                source.getPlayer().sendMessage(Text.of("Your opt-out has been aborted!"));
+                            }
+                        }
                         optedInPlayerNames.add(Objects.requireNonNull(source.getPlayer()).getNameForScoreboard());
                         source.getPlayer().sendMessage(Text.of("You are now opted in!"));
                         return 1;
@@ -77,7 +83,8 @@ public class LegendsOptOut implements ModInitializer {
                     } catch (Exception e) {
                         return 0;
                     }
-                })
+                }
+            )
         ))));
     }
 }
